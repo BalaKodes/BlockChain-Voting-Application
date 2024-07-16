@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List of Candidates Voted</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        margin: 20px auto;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+    }
+    th:hover {
+        background-color: #ddd;
+    }
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+    tr:hover td {
+        background-color: #fff;
+    }
+    td {
+        color: #555;
+        transition: background-color 0.3s ease;
+    }
+    .heading {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        padding: 20px 0;
+        transition: background-color 0.3s ease;
+    }
+    .heading:hover {
+        background-color: hsl(72, 43%, 39%);
+    }
+</style>
+</head>
+<body>
+
+<div class="heading"><strong>Voter Information</strong></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Aadhar Number</th>
+            <th>Mobile Number</th>
+            <th>Date of Birth</th>
+            <th>State</th>
+            <th>District</th>
+            <th>Pin Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for i in range(l)%}
+            <tr>
+                <td>{{i+1}}</td>
+                <td>{{dashboard_data[i][0]}}</td>
+                <td>{{dashboard_data[i][1]}}</td>
+                <td>{{dashboard_data[i][2]}}</td>
+                <td>{{dashboard_data[i][3]}}</td>
+                <td>{{dashboard_data[i][4]}}</td>
+                <td>{{dashboard_data[i][5]}}</td>
+                <td>{{dashboard_data[i][6]}}</td>
+                <td>{{dashboard_data[i][7]}}</td>
+            </tr>
+        {%endfor%}       
+    </tbody>
+</table>
+
+</body>
+</html>

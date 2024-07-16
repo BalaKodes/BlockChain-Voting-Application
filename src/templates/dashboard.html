@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Election Dapp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    .img-size {
+      height: 200px;
+      width: 300px;
+      object-fit: fill;
+    }
+  </style
+</head>
+<body>
+<br/> 
+<div class="container text-center">
+  <h2 class="font-weight-bold">Vote for Best Leader</h2>
+  <p class="font-weight-bold">Voting through Ethereum Blockchain Network</p><br>
+  <div class="row">
+    <div class="col">
+      <div class="card" style="width:300px">
+        <img class="card-img-top img-size" src="{{url_for('static',filename='Vote for Cycle.png')}}" alt="Card image" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title">Candidate Name :<br> Chandra Babu Naidu</h4>
+          <h4 class="card-title">Party Symbol : Cycle</h4>
+          <p class="card-text">EX-Chief Minister of AP</p>
+          <a href="/vote/0" class="btn btn-primary btn-vote" data-id="0">Vote</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width:300px">
+        <img class="card-img-top img-size" src="{{url_for('static',filename='Vote for Fan.png')}}" alt="Card image" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title">Candidate Name :<br>Jagan Mohan Reddy</h4>
+          <h4 class="card-title">Party Symbol : Fan</h4>
+          <p class="card-text">Chief Minister of AP</p>
+          <a href="/vote/1" class="btn btn-warning btn-vote" data-id="1">Vote</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="width:300px">
+        <img class="card-img-top img-size" src="{{url_for('static',filename='Pawan Kalyan.jpg')}}" alt="Card image" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title">Candidate Name : Pawan Kalyan</h4>
+          <h4 class="card-title">Party Symbol : Glass</h4>
+          <p class="card-text">CM Candidate of AP</p>
+          <a href="/vote/2" class="btn btn-danger btn-vote" data-id="2">Vote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span style="color:blue">{{res}}</span>
+  <span style="color:red">{{err}}</span>
+</div>
+<br/><br/>
+<div class="container text-center">
+  <h2 class="font-weight-bold">Votes</h2>
+  <p class="font-weight-bold">Following were the votes polled through Blockchain Network</p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name of Contestant</th>
+        <th>Number of Votes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-weight-bold">1</td>
+        <td class="font-weight-bold">Nara Chandra Babu Naidu</td>
+        <td id="v1" class="font-weight-bold">{{dashboard_data[0]}}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-bold">2</td>
+        <td class="font-weight-bold"> YS. Jagan Mohan Reddy</td>
+        <td id="v2" class="font-weight-bold">{{dashboard_data[1]}}</td>
+      </tr>
+      <tr>
+        <td class="font-weight-bold">3</td>
+        <td class="font-weight-bold">Konidela Pawan Kalyan</td>
+        <td id="v3" class="font-weight-bold">{{dashboard_data[2]}}</td>
+      </tr>
+    </tbody>
+  </table><br>
+  <center><p><a href="/logout" class="btn btn-danger btn-vote">Logout</a></p></center>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/web3.min.js"></script>
+<script src="js/truffle-contract.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

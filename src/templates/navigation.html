@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: rgba(230, 245, 25, 0.947); /* Light yellow background color */
+            font-family: 'Times New Roman', Times, serif; /* Changed font family */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-align: center; /* Center align the content */
+        }
+
+        h1 {
+            margin-top: 40px; /* Adjusted margin */
+            font-size: 36px;
+            font-weight: bold;
+            color: rgb(27, 13, 13);
+            font-family: 'Times New Roman', Times, serif; /* Changed font family */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button-container a {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            color:white; /* Text color */
+            border: none;
+            border-radius: 10px; /* Rounded corners */
+            cursor: pointer;
+            outline: none;
+            margin: 10px;
+            /* Apply glassmorphism effect */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), /* Outer black shadow */
+                        inset 0 0 30px rgba(0, 0, 0, 0.5); /* Inner black shadow */
+            transition: box-shadow 0.3s ease;
+            font-weight:900;
+            text-decoration:none;
+        }
+
+        .button-container a:hover,
+        .button-container a:focus {
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1), /* Increase outer shadow thickness on hover/focus */
+                        inset 0 0 50px rgba(0, 0, 0, 1); /* Increase inner shadow thickness on hover/focus */
+        }
+
+        .image-container {
+            float: right; /* Move image to the right */
+            margin-right: 30px; /* Add some margin to separate from text */
+            justify-content: center;
+            
+        }
+
+        .image-container img {
+            width: 460px; /* Reduced image width */
+            height: 650px;;
+            transition:filter 0.3s ease;
+            border-radius: 25px;
+        }
+        .image-container img:hover,
+        .image-container img:focus {
+            box-shadow: 0 0 30px rgb(24, 236, 5); /* Add shadow on hover/focus */
+        }
+
+        img{
+            display:block;
+            margin-left:30px;
+            margin-right:auto;
+            width: 150;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .Glow{
+            font-size:35px;
+            color:#0e0303;
+            animation:Glow 1s ease-in-out infinite alternate;
+
+        }
+        @keyframes Glow{
+            from{
+                text-shadow: 0 0 10px #fff,0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+            to{
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+        .Bala{
+            font-size:40px;
+            color:#0e0303;
+            animation:Bala 1s ease-in-out infinite alternate;
+
+        }
+        @keyframes Bala{
+            from{
+                text-shadow: 0 0 10px #fff,0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+            to{
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="{{url_for('static',filename='Vote.png')}}" alt="Vote image">
+    </div>
+
+    <h1 class="Bala"><strong><bold>WELCOME TO SMART & SECURED <br>ONLINE VOTING SYSTEM USING BLOCKCHAIN TECHNOLOGY</bold></strong></h1>
+    
+    <br><br><br>
+
+    <div class="button-container justify-content:center">
+        <a href="/index" class="button">Register</a>
+        <a href="/login" class="button">Login</a>
+        <a href="/voters" class="button">Voters Info</a>
+        <a href="/people" class="button">Status</a>
+    </div><br>
+
+    <h1 class="Glow"><strong>WELCOME TO 2024 ELECTIONS!!!</strong></h1><br>
+     
+    <div style="text-align: left; max-width: 1100px; margin: 0 auto;">
+        <ul style="font-size: 25px; list-style-type: disc; margin-left: 0px;">
+            <li>The blockchain voting system is decentralized and completely open.</li>
+            <li>It ensures that voters are protected.</li>
+            <li>Anybody may count the votes with blockchain electronic voting.</li>
+            <li>No one knows who voted for whom.</li>
+        </ul>
+    </div>
+   <!-- <img src="{{url_for('static',filename='india.png')}}" alt="Vote image">-->
+
+    <script>
+        // Check if the user is logged in when trying to access the login page
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const loggedIn = urlParams.get('loggedIn');
+
+        if (loggedIn === 'false') {
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = 'You must register before logging in.';
+            errorMessage.classList.add('error-message');
+            document.body.appendChild(errorMessage);
+        }
+    </script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

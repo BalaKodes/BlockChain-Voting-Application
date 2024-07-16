@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VERIFY AADHAR</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  <link rel="stylesheet" href="{{url_for('static',filename='style1.css')}}">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="login-form">
+  <div class="text">
+    VERIFY AADHAR
+  </div>
+  <form  action="/evaluateForm" method="post">
+    <div class="field">
+      <div class="fas fa-card"></div>
+      <input type="text" id="aadhar" name="aadhar" placeholder="Enter 12 Digit Aadhar">
+    </div>
+    <!-- <div class="field">
+      <div class="fas fa-call"></div>
+      <input type="number" id="mobile" placeholder="Enter Mobile Number">
+    </div> -->
+    <button type="submit">VERIFY</button>
+  </form>
+  <span style="color:green" id="res">{{res}}</span>
+  <span style="color:red" id="err">{{err}}</span>
+
+</div>
+<!-- partial -->
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<script>
+  $(document).ready(function(){
+    // Form submission
+    $("#verificationForm").submit(function(event) {
+      event.preventDefault();
+      var aadharInput = $("#aadhar").val();
+      // var mobileInput = $("#mobile").val();
+      
+      if (aadharInput.length !== 12) {
+        $("#err").text("Aadhar number must be 12 digits long.");
+        return;
+      }
+      
+      // if (mobileInput.length !== 10) {
+      //   $("#err").text("Mobile number must be 10 digits long.");
+      //   return;
+      // }
+      
+      $("#res").text("Form submitted!");
+    });
+
+    // Truncate input if length exceeds the specified limit
+    $("#aadhar").on("input", function() {
+      if ($(this).val().length > 12) {
+        $(this).val($(this).val().slice(0, 12));
+      }
+    });
+
+    // $("#mobile").on("input", function() {
+    //   if ($(this).val().length > 10) {
+    //     $(this).val($(this).val().slice(0, 10));
+    //   }
+    // });
+  });
+</script>
+
+</body>
+</html>

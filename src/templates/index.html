@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voter Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{url_for('static',filename='style2.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="form signup">
+          <form action="/signupform" method="post">
+            <h2 text-align:'center'>Register</h2>
+            <div class="inputBox">
+                <input type="text" required="required" name="name">
+                <i class="fa-regular fa-user"></i>
+                <span>Name</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" id="aadhar" name="aadhar">
+                <i class="fas fa-id-card"></i>
+                <span>Aadhar Number</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="aadhar1">
+                <i class="fa-solid fa-lock"></i>
+                <span>Confirm Aadhar</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" id="mobile" name="mobile">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Mobile Number</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="dob">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Date of Birth</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="state">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>State</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" name="district">
+                <i class="fas fa-map-marked"></i>
+                <span>District</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" required="required" id="pincode" name="pincode">
+                <i class="fas fa-map-pin"></i>
+                <span>Pincode</span>
+            </div>
+            <div class="inputBox">
+              <input type="submit" value="Register" onclick="validate()">
+              <span style="color:green">{{res}}</span>
+              <span style="color:red">{{err}}</span>
+            </form>
+          </div>
+      </div>
+              
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+      <script>
+        $(function() {
+          $("#dob").datepicker({
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1950:yy",
+            dateFormat: 'dd-mm-yy' // Set date format
+          });
+        });
+
+      document.getElementById("aadhar").addEventListener("input", function(event) {
+        if (this.value.length > 12) {
+          this.value = this.value.slice(0, 12);
+        }
+      });
+              
+      document.getElementById("mobile").addEventListener("input", function(event) {
+        if (this.value.length > 10) {
+          this.value = this.value.slice(0, 10);
+        }
+      });
+              
+      document.getElementById("pincode").addEventListener("input", function(event) {
+        if (this.value.length > 6) {
+            this.value = this.value.slice(0, 6);
+        }
+      });
+    </script>
+              
+  </body>
+</html>
+              
